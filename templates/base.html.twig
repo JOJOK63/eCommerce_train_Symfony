@@ -9,7 +9,7 @@
     <title>Carousel Template · Bootstrap</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="bootstrap.css" rel="stylesheet">
+    <link href="{{ asset ('assets/css/bootstrap.min.css') }}" rel="stylesheet">
 
     <style>
         .bd-placeholder-img {
@@ -28,7 +28,7 @@
         }
     </style>
     <!-- Custom styles for this template -->
-    <link href="carousel.css" rel="stylesheet">
+    <link href="{{ asset('assets/css/carousel.css') }}" rel="stylesheet">
 </head>
 <body>
 <header>
@@ -188,6 +188,6 @@
     </footer>
 </main>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="bootstrap.bundle.js"></script>
+<script src="{{ asset('assets/js/bootstrap.bundle.js') }}"></script>
 </body>
 </html>
