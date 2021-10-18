@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
-use App\Form\RegisterFormType;
+use App\Form\RegisterType;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -24,14 +24,16 @@ class RegisterController extends AbstractController
     }
 
 
-    #[Route('/inscription', 'register')]
+    /**
+     * @Route("/inscription", name="register")
+     */
 //    injection of dependance Request
     public function index(Request $request , UserPasswordEncoderInterface $encoder): Response
     {
         //instanciation of the class User ,because we gonna have a new user
         $user = new User();
         //instanciation du formulaire , on lui injecte la Class register type et les data de user
-        $form = $this->createForm(RegisterFormType::class,$user);
+        $form = $this->createForm(RegisterType::class,$user);
 
 
         //listen and catch the request

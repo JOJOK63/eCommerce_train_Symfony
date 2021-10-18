@@ -14,14 +14,17 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Length;
 
-class RegisterFormType extends AbstractType
+class RegisterType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add('firstname', TextType::class, [
                 'label' => 'Votre prénom',
-                'constraints' => new Length(2, 30),
+                'constraints' => new Length([
+                    'min'=> 2,
+                    'max' => 30,
+                ]),
 //                to put a placeholder ,
                 'attr' => [
                     'placeholder' => 'Saisir votre prénom'
@@ -29,19 +32,26 @@ class RegisterFormType extends AbstractType
             ])
             ->add('lastname', TextType::class, [
                 'label' => 'Votre nom',
-                'constraints' => new Length(2, 30),
+                'constraints' => new Length([
+                    'min'=> 2,
+                    'max' => 30,
+                ]),
                 'attr' => [
                     'placeholder' => 'Saisir votre nom'
                 ]
             ])
             ->add('email', EmailType::class, [
                 'label' => 'Votre Email',
-                'constraints' => new Length(2, 30),
+                'constraints' => new Length([
+                    'min'=> 2,
+                    'max' => 30,
+                ]),
                 'attr' => [
                     'placeholder' => "Saisir votre mot de passe"
                 ]
             ])
             ->add('password', RepeatedType::class, [
+                'type'=> PasswordType::class,
                 'invalid_message' => 'le mot de passe et la confirmation doivent etre identique',
                 'label' => 'Votre mot de passe',
                 'required' => true,
