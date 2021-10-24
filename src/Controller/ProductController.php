@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Classe\Search;
 use App\Entity\Product;
 use App\Form\SearchType;
+use App\Repository\ProductRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -23,7 +24,7 @@ class ProductController extends AbstractController
     /**
      * @Route("/nos-produits" , name="products")
      */
-    public function index(Request $request): Response
+    public function index(Request $request, ProductRepository $productRepository): Response
     {
 
         $search = new Search();
