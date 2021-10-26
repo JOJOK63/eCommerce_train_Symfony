@@ -32,10 +32,12 @@ class Carrier
      */
     private $price;
 
-    /**
-     * @ORM\Column(type="text")
-     */
-    private $delivery;
+
+
+    public function __toString()
+    {
+        return $this->getName().'[br]'.$this->getDescription().'[br]'.number_format($this->getPrice(),2,',',',').'€';
+    }
 
     public function getId(): ?int
     {
@@ -78,15 +80,4 @@ class Carrier
         return $this;
     }
 
-    public function getDelivery(): ?string
-    {
-        return $this->delivery;
-    }
-
-    public function setDelivery(string $delivery): self
-    {
-        $this->delivery = $delivery;
-
-        return $this;
-    }
 }
